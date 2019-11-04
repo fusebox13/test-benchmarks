@@ -17,7 +17,7 @@ describe('Sync Mount Helper', () => {
     wrapper = mountComponent();
   });
   for (let i = 0; i < 50000; i += 1) {
-    it('renders props.msg when passed', () => {
+    it(`Test #${i}`, () => {
       expect(wrapper.text()).to.include(msg);
     });
   }

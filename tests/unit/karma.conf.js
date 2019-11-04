@@ -62,7 +62,7 @@ module.exports = function (config) {
     timeStatsReporter: {
       reportTimeStats: true, // Print Time Stats (histogram)
       binSize: 1, // Bin size for histogram (in milliseconds)
-      slowThreshold: 5, // The threshold for what is considered a slow test (in milliseconds).
+      slowThreshold: 10, // The threshold for what is considered a slow test (in milliseconds).
       reportSlowestTests: true, // Print top slowest tests
       showSlowTestRankNumber: false, // Displays rank number next to slow tests, e.g. `1) Slow Test`
       longestTestsCount: 5, // Number of top slowest tests to list
