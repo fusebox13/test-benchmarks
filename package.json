@@ -46,6 +46,7 @@
     "karma-sinon-chai": "^2.0.2",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.32",
+    "karma-time-stats-reporter": "^0.1.0",
     "karma-webpack": "^4.0.2",
     "node-gyp": "^6.0.1",
     "rebuild": "^0.1.2",

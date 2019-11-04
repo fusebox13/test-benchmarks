@@ -3,11 +3,7 @@ import { mount } from '@vue/test-utils';
 import HelloWorld from '@/components/HelloWorld.vue';
 
 describe('Sync Mount Helper', () => {
-  let memoryBefore;
-  let memoryAfter;
   let wrapper;
-  const msg = 'new message';
-
   async function mountComponent() {
     const msg = 'new message';
     const subject = mount(HelloWorld, {
@@ -15,11 +11,6 @@ describe('Sync Mount Helper', () => {
     });
     return subject;
   }
-
-  before(() => {
-    window.gc();
-    memoryBefore = window.performance.memory.usedJSHeapSize;
-  });
   beforeEach(async () => {
     wrapper = await mountComponent();
   });
@@ -28,9 +19,4 @@ describe('Sync Mount Helper', () => {
       expect(wrapper.text()).to.include(msg);
     });
   }
-
-  after(() => {
-    memoryAfter = window.performance.memory.usedJSHeapSize;
-    console.log('Before:', memoryBefore, 'After:', memoryAfter, 'Delta:', memoryAfter - memoryBefore);
-  });
 });

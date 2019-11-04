@@ -3,15 +3,8 @@ import { mount } from '@vue/test-utils';
 import HelloWorld from '@/components/HelloWorld.vue';
 
 describe('No Async', () => {
-  let memoryBefore;
-  let memoryAfter;
   let wrapper;
   const msg = 'new message';
-
-  before(() => {
-    window.gc();
-    memoryBefore = window.performance.memory.usedJSHeapSize;
-  });
   beforeEach(() => {
     wrapper = mount(HelloWorld, {
       propsData: { msg },
@@ -22,9 +15,4 @@ describe('No Async', () => {
       expect(wrapper.text()).to.include(msg);
     });
   }
-
-  after(() => {
-    memoryAfter = window.performance.memory.usedJSHeapSize;
-    console.log('Before:', memoryBefore, 'After:', memoryAfter, 'Delta:', memoryAfter - memoryBefore);
-  });
 });
