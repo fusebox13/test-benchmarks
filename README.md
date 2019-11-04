@@ -5,25 +5,12 @@
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Run all tests in Karma
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+npm run test:karma
 ```
 
-### Run your unit tests
+### Run a single test in Karma
 ```
-npm run test:unit
+npm run test:karma -- file:<filename>
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
