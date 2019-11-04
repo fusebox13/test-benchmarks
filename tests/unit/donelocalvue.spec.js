@@ -1,26 +1,25 @@
 import { expect } from 'chai';
-import { shallowMount } from '@vue/test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
 import HelloWorld from '@/components/HelloWorld.vue';
 
-describe('HelloWorld.vue', () => {
+describe('Done Local Vue', () => {
   let memoryBefore;
   let memoryAfter;
   let wrapper;
+  const localVue = createLocalVue();
   const msg = 'new message';
 
   before(() => {
     window.gc();
     memoryBefore = window.performance.memory.usedJSHeapSize;
   });
-  beforeEach(() => {
-    wrapper = shallowMount(HelloWorld, {
+  beforeEach((done) => {
+    wrapper = mount(HelloWorld, {
       propsData: { msg },
     });
+    localVue.nextTick(done);
   });
-  afterEach(() => {
-    wrapper.destroy();
-  });
-  for (let i = 0; i < 1000; i += 1) {
+  for (let i = 0; i < 50000; i += 1) {
     it('renders props.msg when passed', () => {
       expect(wrapper.text()).to.include(msg);
     });

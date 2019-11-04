@@ -1,26 +1,29 @@
 import { expect } from 'chai';
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import HelloWorld from '@/components/HelloWorld.vue';
 
-describe('HelloWorld.vue', () => {
+describe('Sync Mount Helper', () => {
   let memoryBefore;
   let memoryAfter;
   let wrapper;
   const msg = 'new message';
 
+  async function mountComponent() {
+    const msg = 'new message';
+    const subject = mount(HelloWorld, {
+      propsData: { msg },
+    });
+    return subject;
+  }
+
   before(() => {
     window.gc();
     memoryBefore = window.performance.memory.usedJSHeapSize;
   });
-  beforeEach(() => {
-    wrapper = shallowMount(HelloWorld, {
-      propsData: { msg },
-    });
+  beforeEach(async () => {
+    wrapper = await mountComponent();
   });
-  afterEach(() => {
-    wrapper.destroy();
-  });
-  for (let i = 0; i < 1000; i += 1) {
+  for (let i = 0; i < 50000; i += 1) {
     it('renders props.msg when passed', () => {
       expect(wrapper.text()).to.include(msg);
     });

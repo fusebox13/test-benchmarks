@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 import HelloWorld from '@/components/HelloWorld.vue';
 
-describe('HelloWorld.vue', () => {
+describe('Cleanup', () => {
   let memoryBefore;
   let memoryAfter;
   let wrapper;
@@ -19,8 +19,9 @@ describe('HelloWorld.vue', () => {
   });
   afterEach(() => {
     wrapper.destroy();
+    wrapper = null;
   });
-  for (let i = 0; i < 1000; i += 1) {
+  for (let i = 0; i < 50000; i += 1) {
     it('renders props.msg when passed', () => {
       expect(wrapper.text()).to.include(msg);
     });

@@ -1,8 +1,9 @@
 import { expect } from 'chai';
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import HelloWorld from '@/components/HelloWorld.vue';
+import Vue from 'vue';
 
-describe('HelloWorld.vue', () => {
+describe('Async Vue', () => {
   let memoryBefore;
   let memoryAfter;
   let wrapper;
@@ -12,15 +13,13 @@ describe('HelloWorld.vue', () => {
     window.gc();
     memoryBefore = window.performance.memory.usedJSHeapSize;
   });
-  beforeEach(() => {
-    wrapper = shallowMount(HelloWorld, {
+  beforeEach(async () => {
+    wrapper = mount(HelloWorld, {
       propsData: { msg },
     });
+    await Vue.nextTick();
   });
-  afterEach(() => {
-    wrapper.destroy();
-  });
-  for (let i = 0; i < 1000; i += 1) {
+  for (let i = 0; i < 50000; i += 1) {
     it('renders props.msg when passed', () => {
       expect(wrapper.text()).to.include(msg);
     });
