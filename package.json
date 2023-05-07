@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "karma": "^4.4.1",
+    "karma": "^6.4.2",
     "karma-mocha-reporter": "^2.2.5",
     "node-memwatch": "^1.0.1",
     "vue": "^2.6.10",
